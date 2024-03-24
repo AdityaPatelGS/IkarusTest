@@ -33,6 +33,11 @@ void APiggy::BeginPlay()
 	
 }
 
+void APiggy::DestroyPiggy()
+{
+
+}
+
 void APiggy::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	UE_LOG(LogTemp,Warning,TEXT("Piggy Overlapped"));
@@ -40,12 +45,12 @@ void APiggy::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* O
 	{
 		UE_LOG(LogTemp, Warning, TEXT("OTher Actor Not NULL"));
 		
-		Destroy();
+		DestroyPiggy();
 
 		ABird* Bird = Cast<ABird>(OtherActor);
 		if (Bird)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Callling Destroy"));
+			UE_LOG(LogTemp, Warning, TEXT("Calling Destroy"));
 
 			Bird->BirdDeathCountDown();
 		}
